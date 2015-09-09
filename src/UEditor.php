@@ -4,7 +4,6 @@ namespace yadjet\editor;
 
 use yii\helpers\Html;
 use yii\helpers\Json;
-use yii\widgets\ActiveForm;
 use yii\widgets\InputWidget;
 
 /**
@@ -17,7 +16,6 @@ class UEditor extends InputWidget
 
     /**
      * 表单对象
-     * @var ActiveForm
      */
     public $form;
     public $htmlOptions = [];
@@ -45,10 +43,6 @@ class UEditor extends InputWidget
         parent::init();
         if (!isset($this->htmlOptions['class'])) {
             $this->htmlOptions['class'] = 'editor';
-            $this->htmlOptions['style'] = 'width: 612px; margin-left: 135px;';
-        }
-        if (!isset($this->htmlOptions['style'])) {
-            $this->htmlOptions['style'] = 'width: 612px; margin-left: 135px;';
         }
     }
 
