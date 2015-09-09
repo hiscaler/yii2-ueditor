@@ -18,5 +18,3 @@ composer require "yadjet/yii2-ueditor:dev-master"
 ])
 ?>
 ```
-
-Wechat SDK 详细的使用方法请参考 [overtrue/wechat 使用手册](https://github.com/overtrue/wechat/wiki)
