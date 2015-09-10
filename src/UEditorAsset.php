@@ -2,13 +2,16 @@
 
 namespace yadjet\editor;
 
+use Yii;
+use yii\web\AssetBundle;
+
 class UEditorAsset extends AssetBundle
 {
 
     public $languageFiles = [
         'en', 'zh-cn'
     ];
-    public $sourcePath = '@vendor/yadjet/editor/assets';
+    public $sourcePath = '@vendor/yadjet/yii2-ueditor/src/assets';
     public $css = [];
     public $js = [
         'ueditor.config.js',
