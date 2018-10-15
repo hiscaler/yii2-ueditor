@@ -15,12 +15,29 @@ class UEditor extends InputWidget
 {
 
     /**
-     * 表单对象
+     * @var \yii\widgets\ActiveForm 表单对象
      */
     public $form;
+
+    /**
+     * @var array 表单控件（textarea）属性
+     */
     public $htmlOptions = [];
+
+    /**
+     * @var null|false|string 标签
+     */
+    public $label = null;
+
+    /**
+     * @var array js 属性
+     */
     public $jsOptions = [];
-    private $_jsOptions = [
+
+    /**
+     * @var array 默认 js 属性
+     */
+    private $_defaultJsOptions = [
         'toolbars' => [
             [
                 'fullscreen', 'source', '|', 'undo', 'redo', '|',
@@ -51,11 +68,10 @@ class UEditor extends InputWidget
         $id = $this->options['id'];
         $view = $this->getView();
         UEditorAsset::register($view);
-        $jsOptions = array_merge($this->jsOptions, $this->_jsOptions);
-        $js = "var ue = UE.getEditor('" . $id . "', " . ($jsOptions ? Json::encode($jsOptions) : '{}') . ");";
-        $view->registerJs($js);
+        $jsOptions = array_merge($this->jsOptions, $this->_defaultJsOptions);
+        $view->registerJs("var ue = UE.getEditor('$id', " . Json::encode($jsOptions) . ");");
         if ($this->hasModel()) {
-            return $this->form->field($this->model, $this->attribute)->textArea($this->htmlOptions);
+            return $this->form->field($this->model, $this->attribute, $this->options)->textarea($this->htmlOptions)->label($this->label);
         } else {
             return Html::textInput($this->name, $this->value, $this->htmlOptions);
         }
