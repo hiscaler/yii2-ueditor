@@ -66,6 +66,7 @@ class UEditor extends InputWidget
     public function run()
     {
         $id = $this->options['id'];
+        unset($this->options['id']);
         $view = $this->getView();
         UEditorAsset::register($view);
         $jsOptions = array_merge($this->jsOptions, $this->_defaultJsOptions);
